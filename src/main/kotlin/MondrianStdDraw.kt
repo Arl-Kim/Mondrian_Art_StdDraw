@@ -34,6 +34,32 @@ class MondrianStdDraw(val canvasWidth: Double, val canvasHeight: Double) {
      * @param height The height of the current region.
      */
     private fun generateArtRecursively(x: Double, y: Double, width: Double, height: Double){
+        //Define the threshold for splitting
+        val splitThreshold = 60.0
 
+        //Make decision on splitting
+        val shouldSplit = when{
+            (width > canvasWidth / 2  && height > canvasHeight / 2) -> true
+            (width > splitThreshold && height > splitThreshold) ->
+                Random.nextDouble() < 2.0 / 3 && Random.nextDouble() < 2.0 / 3
+            else -> false
+        }
+
+        if(shouldSplit){
+            //Splits into 4 regions
+            val verticalLine = Random.nextDouble(x + width / 3, x + 2 * width / 3)
+            val horizontalLine = Random.nextDouble(y + height / 3, y + 2 * height / 3)
+
+            generateArtRecursively(x, y, verticalLine - x, horizontalLine - y)
+            generateArtRecursively(verticalLine, y, x + width - verticalLine, horizontalLine - y)
+            generateArtRecursively(x, horizontalLine, verticalLine - x, y + height - horizontalLine)
+            generateArtRecursively(verticalLine, horizontalLine, x + width - verticalLine, y + height - horizontalLine)
+        }
+        else{
+            //Do not split but fill with random color instead
+            val fill = if (Random.nextDouble() < 1.0 / 4) randomColor() else "white"
+            StdDraw.setPenColor(fill)
+            StdDraw.filledRectangle(x + width / 2, y + height / 2, width / 2, height / 2)
+        }
     }
 }
