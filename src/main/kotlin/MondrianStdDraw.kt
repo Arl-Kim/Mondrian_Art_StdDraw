@@ -72,4 +72,12 @@ class MondrianStdDraw(val canvasWidth: Double, val canvasHeight: Double) {
         val colors = listOf("red", "blue", "yellow")
         return colors.random()
     }
+
+    /**
+     * The main function that creates an instance of MondrianArtGenerator and generates abstract art.
+     */
+    fun main(){
+        val generator = MondrianStdDraw(800.0, 600.0)
+        generator.generateArt()
+    }
 }
