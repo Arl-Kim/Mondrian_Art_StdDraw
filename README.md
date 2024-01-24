@@ -5,4 +5,4 @@ The high-level algorithm for generating mondrian art should work like this. Give
 3.	Split the region into 2 smaller regions of equal width, one positioned on top of another. Recurse on each subregion.
 4.	Do no splitting. Just draw the region with black outline and fill it with a random color.
 
-This program implements this algorithm and outputs the generated mondrian art on a HTML file using a recursive splitting technique and the StdDraw Library.
+This program implements this algorithm and outputs the generated mondrian art using a recursive splitting technique and the StdDraw Library.
