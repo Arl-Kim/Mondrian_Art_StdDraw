@@ -62,4 +62,14 @@ class MondrianStdDraw(val canvasWidth: Double, val canvasHeight: Double) {
             StdDraw.filledRectangle(x + width / 2, y + height / 2, width / 2, height / 2)
         }
     }
+
+    /**
+     * Generates a random color from a predefined list.
+     *
+     * @return A randomly selected color.
+     */
+    private fun randomColor(): String{
+        val colors = listOf("red", "blue", "yellow")
+        return colors.random()
+    }
 }
